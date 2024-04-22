@@ -1,0 +1,4 @@
+{
+    "dataset":"rapidai4eo", // Dataset name
+    "root_path":"", // Where to save the data.
+}
