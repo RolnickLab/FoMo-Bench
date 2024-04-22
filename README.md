@@ -43,16 +43,13 @@ pre-commit install
 │   ├── download
 │   └── training
 ├── datasets/
-│   ├── CactusDataset.py
+│   ├── BigEarthNet.py
 │   ├── FLAIRDataset.py
 │   └──  ...
 ├── downloading_scripts/
-|    ├── cactus.sh
+|    ├── bigearthnet.sh
 |    ├── treesat.sh
 |    └── ...
-├── tallos/
-|    ├── tallos_tools.py
-|    ├── ...
 ├── training/
 |    └── classification.py
 |    └── segmentation.py
