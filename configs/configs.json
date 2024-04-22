@@ -1,0 +1,21 @@
+{
+    "dataset":"bigearthnet", // Options: All available datasets
+    "wandb":false, // Use wandb for logging
+    "wandb_project":"YourWandbProject", // Wandb project name
+    "wandb_entity":"YourWandbEntity", // Wandb entity name
+    "wandb_id_resume":null, // provide the run id to resume wandb logging on the same run. Run id can be found in the checkpoint path as id.json
+    "phase":"train", // Options: train, test
+    "eval_checkpoint":null, // Checkpoint to evaluate on when phase=test. If null the last checkpoint will be used. If not null, the evaluation will be based on the provided checkpoint path.
+    "device":"cuda",
+    "mixed_precision":true, // Mixed precision training
+    "seed":999, // Seed for reproducibility
+    "webdataset":true, // Use webdataset for data loading. If webdataset format is not available at webdataset_root_path, the webdataset will be created.
+    "webdataset_parallel":true, // Use parallel processes for webdataset creation
+    "webdataset_write_processes":32, // Number of processes for writing webdataset
+    "webdataset_shuffle_size": 500,// 1000,
+    "webdataset_initial_buffer":500,// 1000,
+    "max_samples_per_shard": 256, //set upper limit 256 samples per shard
+    "max_sample_resolution":null, // Store samples to shards with fixed resolution e.g Height x Width : 64x64. ONLY FOR PRETRAINING! The labels are deliberately not adapted and the resulting webdataset can only be used when the path is provided in the next option. For finetuning the resolution can be adapted at the augmentations.json
+    "webdataset_root_path":"your_webdataset_root_path", // Where the webdataset will be stored. If null the webdataset will be stored at the project's root directory. 
+    "checkpoint_root_path":"$SCRATCH/FoMo-BenchV2", //root directory for the checkpoint paths. If null checkpoints will be stored at the project's root directory. 
+}
