@@ -17,5 +17,5 @@
     "max_samples_per_shard": 256, //set upper limit 256 samples per shard
     "max_sample_resolution":null, // Store samples to shards with fixed resolution e.g Height x Width : 64x64. ONLY FOR PRETRAINING! The labels are deliberately not adapted and the resulting webdataset can only be used when the path is provided in the next option. For finetuning the resolution can be adapted at the augmentations.json
     "webdataset_root_path":"your_webdataset_root_path", // Where the webdataset will be stored. If null the webdataset will be stored at the project's root directory. 
-    "checkpoint_root_path":"$SCRATCH/FoMo-BenchV2", //root directory for the checkpoint paths. If null checkpoints will be stored at the project's root directory. 
+    "checkpoint_root_path":null, //root directory for the checkpoint paths. If null checkpoints will be stored at the project's root directory. 
 }
