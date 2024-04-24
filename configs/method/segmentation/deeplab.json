@@ -1,0 +1,6 @@
+{
+    "architecture":"deeplab",
+    "backbone":"resnet50",
+    "pretrained":true,
+    "output_size":64, //only used for finetuning SSL segmentation models
+}

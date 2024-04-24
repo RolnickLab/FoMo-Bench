@@ -1,0 +1,6 @@
+{
+    "architecture":"upernet",
+    "backbone":"swin_base",
+    "pretrained":true,
+    "output_size":64, //only used for finetuning SSL segmentation models
+}
