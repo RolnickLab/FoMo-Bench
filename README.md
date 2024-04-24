@@ -1,5 +1,5 @@
 # Repository for benchmarking forest datasets
-This repository contains code for the benchmarking of forest monitoring related datasets.
+This repository contains code for the benchmarking of forest monitoring related datasets. (WIP)
 
 # Table of Contents
 - [Setup Project](#setup-project)
