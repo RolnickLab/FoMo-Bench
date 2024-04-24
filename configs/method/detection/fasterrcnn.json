@@ -1,0 +1,5 @@
+{
+    "architecture":"fasterrcnn",
+    "backbone":"resnet50",
+    "pretrained":true
+}

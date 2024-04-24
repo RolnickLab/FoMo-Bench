@@ -1,0 +1,4 @@
+{
+    "backbone":"convnext_base.fb_in1k",
+    "pretrained":true
+}

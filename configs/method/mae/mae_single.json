@@ -1,0 +1,18 @@
+{
+    "spectral_mae":true,
+    "image_size":128,
+    "patch_size":16,
+    "single_embedding_layer":true,
+    "num_classes":1000,
+    "dim":1024,
+    "depth":12,
+    "heads":16,
+    "mlp_dim":2048,
+    "masked_ratio":0.75,
+    "decoder_dim":512, // decoder dim. Can be smaller than encoder dim.
+    "decoder_depth":8,
+    "decoder_heads":16,
+    "num_samples_per_epoch":1280000, // Number of iterations for each epoch. Final number of steps = num_steps_per_epoch * epochs
+    "log_reconstruction_every":100, // How often to log reconstruction for RGB data
+    "accumulate_gradients":4, // If not null, gradients will be accumulated among N (value of "accumulate_gradients") batches, effectively optimizing towards a common direction for multiple modalities
+}

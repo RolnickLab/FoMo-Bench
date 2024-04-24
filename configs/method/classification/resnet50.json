@@ -1,0 +1,4 @@
+{
+    "backbone":"resnet50",//"convnext_base.fb_in1k",
+    "pretrained":true
+}
