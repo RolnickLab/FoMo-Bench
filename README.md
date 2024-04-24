@@ -149,7 +149,6 @@ In this benchmark we mainly focus on:
 |ResNet| [ResNet Paper](https://arxiv.org/abs/1512.03385)|
 |ViT| [ViT Paper](https://arxiv.org/abs/2010.11929)|
 |ConvNext|[ConvNext Paper](https://arxiv.org/abs/2201.03545)|
-|Swin-Transformer|[Swin Paper](https://arxiv.org/abs/2103.14030)|
 
 In terms of semantic semgnetation problems we focus on:
 
@@ -159,10 +158,14 @@ In terms of semantic semgnetation problems we focus on:
 |UNet++|[UNet++ Paper](https://arxiv.org/abs/1807.10165)|
 |DeepLabv3plus|[DeepLabv3plus Paper](https://arxiv.org/abs/1802.02611)|
 |UperNet|[UperNet Paper](https://arxiv.org/abs/1807.10221)|
-|SegFormer|[SegFormer Paper TBD](https://arxiv.org/abs/2105.15203)|
 
-UNet, UNet++ and DeepLabv3plus support most CNN backbones available in timm plus the [TransMix transformer](https://arxiv.org/abs/2111.09833).
-UperNet supports variants of ConvNext and Swin, while SegFormer supports 5 variants of the [Mix Transformer](https://arxiv.org/abs/2105.15203) with increasing parameter size (b0-b5).
+
+For object detection we support:
+
+|Model| Paper|
+|Faster R-CNN| [Faster R-CNN paper](https://proceedings.neurips.cc/paper_files/paper/2015/file/14bfa6bb14875e45bba028a21ed38046-Paper.pdf)|
+|RetinaNet| [RetinaNet paper](https://openaccess.thecvf.com/content_iccv_2017/html/Lin_Focal_Loss_for_ICCV_2017_paper.html)|
+|YOLOS| [YOLOS paper](https://proceedings.neurips.cc/paper/2021/hash/dc912a253d1e9ba40e2c597ed2376640-Abstract.html)|
 
 #### Adding new models
 To add support for a new model just include its construction in `utilities/model_utilities.py`. Depending on the task, the models are constructed in one of the following functions:
