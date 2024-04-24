@@ -28,7 +28,7 @@ Depending on the cuda version in your system execute (e.g for cuda 12.1):
 pip install pyg_lib torch_scatter torch_cluster torch_spline_conv -f https://data.pyg.org/whl/torch-2.1.0+cu121.html
 ```
 
-To activate the pre-commit hook for the black formatter execute:
+To activate the pre-commit hook for the [black formatter](https://black.readthedocs.io/en/stable/) execute:
 ```
 pre-commit install
 ```
