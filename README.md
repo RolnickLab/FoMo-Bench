@@ -1,6 +1,16 @@
-# Repository for benchmarking forest datasets
-This repository contains code for the benchmarking of forest monitoring related datasets. (WIP)
+### This repository contains the code used in [FoMo-Bench: a multi-modal, multi-scale and multi-task Forest Monitoring Benchmark for remote sensing foundation models](https://arxiv.org/abs/2312.10114)  (WIP)
 
+
+If you use this work please consider citing:
+
+```
+@article{bountos2023fomo,
+  title={FoMo-Bench: a multi-modal, multi-scale and multi-task Forest Monitoring Benchmark for remote sensing foundation models},
+  author={Bountos, Nikolaos Ioannis and Ouaknine, Arthur and Rolnick, David},
+  journal={arXiv preprint arXiv:2312.10114},
+  year={2023}
+}
+```
 # Table of Contents
 - [Setup Project](#setup-project)
 - [Repository Structure](#repository-structure)
