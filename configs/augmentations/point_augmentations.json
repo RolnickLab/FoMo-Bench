@@ -1,0 +1,21 @@
+{
+    "augmentations": {
+        //"SamplePoints":{
+        //    "num":1024,
+        //    "remove_faces":true,
+	//    "include_normals":false
+        //},
+        "RandomJitter": {
+            "translate": 0.01
+        },
+        "RandomRotate_x": {
+            "degrees": 15
+        },
+	"RandomRotate_y": {
+            "degrees": 15
+        },
+        "RandomRotate_z": {
+            "degrees": 15
+        }
+    }
+}

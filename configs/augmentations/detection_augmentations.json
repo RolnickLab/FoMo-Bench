@@ -1,0 +1,46 @@
+{
+    "augmentations": {
+        "Resize":{
+            "value":224,
+	    // "value":64,
+            "p":1.0
+        },
+        "RandomResizedCrop": {
+            "value": 224,
+            "scale":[0.2, 1.0],
+            "interpolation":3,
+            "p": 0.0
+        },
+        "GaussianBlur": {
+            "value": [
+                0.1,
+                2.0
+            ],
+            "p": 0.0
+        },
+        "HorizontalFlip": {
+            "value": "",
+            "p": 0.5
+        },
+        "VerticalFlip": {
+            "value": "",
+            "p": 0.5
+        },
+        "RandomRotation":{
+            "p": 0.0
+        },
+        "ElasticTransform": {
+            "value": "",
+            "p": 0.0
+        },
+        "Cutout": {
+            "p": 0.0
+        },
+        "MultNoise": {
+            "p": 0.0
+        },
+        "GaussianNoise": {
+            "p": 0.2
+        }
+    }
+}
