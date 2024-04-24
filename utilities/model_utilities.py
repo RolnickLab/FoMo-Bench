@@ -34,7 +34,7 @@ class SupFoundation(nn.Module):
 
 
 def create_presto(configs):
-    raise "Presto not supported yet!"
+    raise NotImplementedError
 
 
 def create_classifier(configs):
