@@ -1,4 +1,4 @@
-### This repository contains the code used in [FoMo-Bench: a multi-modal, multi-scale and multi-task Forest Monitoring Benchmark for remote sensing foundation models](https://arxiv.org/abs/2312.10114)  (WIP)
+### This repository contains the code used in [FoMo-Bench: a multi-modal, multi-scale and multi-task Forest Monitoring Benchmark for remote sensing foundation models](https://arxiv.org/abs/2312.10114) (Status: WIP)
 
 
 If you use this work please consider citing:
