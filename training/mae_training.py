@@ -142,6 +142,11 @@ def train_epoch_spectral(loader, mae, optimizer, epoch, configs, scaler):
         if configs["accumulate_gradients"] is not None:
             loss = loss / batches_to_accumulate
 
+        if configs["mixed_precision"]:
+            scaler.scale(loss).backward()
+        else:
+            loss.backward()
+
         # If gradient accumulation is enabled, update weights every batches_to_accumulate iterations.
         if (
             configs["accumulate_gradients"] is None
@@ -149,11 +154,9 @@ def train_epoch_spectral(loader, mae, optimizer, epoch, configs, scaler):
             or (idx + 1) == num_steps_per_epoch
         ):
             if configs["mixed_precision"]:
-                scaler.scale(loss).backward()
                 scaler.step(optimizer)
                 scaler.update()
             else:
-                loss.backward()
                 optimizer.step()
     print("=" * 20)
     print("Epoch sampling statistics")
