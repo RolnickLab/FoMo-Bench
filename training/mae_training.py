@@ -89,13 +89,7 @@ def train_epoch_spectral(loader, mae, optimizer, epoch, configs, scaler):
         end_time = time.time()
         data_loading_time_per_dataset[dataset_name][0] += end_time - start_time
         data_loading_time_per_dataset[dataset_name][1] += 1
-
-        if (
-            configs["accumulate_gradients"] is None
-            or (idx + 1) % batches_to_accumulate == 0
-            or (idx + 1) == num_steps_per_epoch
-        ):
-            optimizer.zero_grad()
+            
         with torch.cuda.amp.autocast(enabled=configs["mixed_precision"]):
             if (
                 configs["accumulate_gradients"] is None
@@ -156,8 +150,10 @@ def train_epoch_spectral(loader, mae, optimizer, epoch, configs, scaler):
             if configs["mixed_precision"]:
                 scaler.step(optimizer)
                 scaler.update()
+                optimizer.zero_grad()
             else:
                 optimizer.step()
+                optimizer.zero_grad()
     print("=" * 20)
     print("Epoch sampling statistics")
     print(batches_per_dataset)
