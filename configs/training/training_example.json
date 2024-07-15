@@ -1,0 +1,27 @@
+{
+    "epochs":20,
+    "batch_size":128,
+    "num_workers":4,
+    "lr":1e-3,
+    "weight_decay":1e-4,
+    "schedule":"cos", // cosine with warmup
+    "warmup_epochs":0, //epochs to warmup
+    "min_lr":0, // minimum learning rate bound for cyclic schedulers that hit 0
+    "loss":"cross_entropy",
+    "optimizer":"adam",
+    "normalization":"standard", // Options: standard (0 mean, 1 std), min-max (min 0, max 1), none
+    "augment":false,
+    "metric_aggregation_strategy":["micro","macro","weighted"], // Options, micro, macro, none for per-class calculation
+    "distributed":false,
+    "pin_memory":true,
+    "prefetch_factor":2,
+    "persistent_workers":false,
+    "linear_evaluation":false, // set to true to evaluate a pretrained model
+    "pretrained_model_path":null, //path for the checkpoint to be evaluated under the linear eval protocol
+    "resume_checkpoint_path":null, // checkpoint to resume training
+    "enforce_resize":null, // if not none, data will be resized in both train/evaluation to the provided value (only for webdataset setting),
+    "change_finetuning_resolution":120, // If not none, the finetuning vit will have its positional embedding changed to support the new res
+    "finetuning_patch_size":16, // In accordance to finetuning resolution. Ideally keep it the same as in training
+    "start_epoch":0, // epoch to continue training
+    "log_images":false, // log segmentation masks and images to wandb
+}
