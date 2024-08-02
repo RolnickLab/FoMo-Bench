@@ -1,0 +1,14 @@
+{"dataset_names":"neontree_detection,reforestree",
+ "root_path_neontree":"/network/projects/fomobench/Datasets/NeonTree",
+ "root_path_reforestree":"/network/projects/fomobench/Datasets/ReforesTree",
+ "task":"detection", // Possible Tasks: Depending on the dataset,
+ "segmentation_task":null, // Set to false if segmentation is not required
+ "download":false, // Option to download the dataset
+ "checksum": false,  // check the MD5 of the downloaded files
+ "num_classes":7,
+ "in_channels":3,
+ "modality":"rgb",
+ "metrics":["iou","ciou","map"],
+ // "metrics":["accuracy","fscore"],
+ "meta_info":""
+}

@@ -1,0 +1,30 @@
+{
+    "epochs": 200,
+    "batch_size":32,
+    "num_workers":2,
+    "lr":1e-2,
+    "weight_decay":5e-4,
+    "momentum":0.9,
+    "loss":"cross_entropy",
+    "optimizer":"sgd",
+    "lr_step":500,
+    "normalization":"other", // Options: standard (0 mean, 1 std), min-max (min 0, max 1), none
+    "augment":true,
+    "metric_aggregation_strategy":[null], // Options, micro, macro, none for per-class calculation
+    "distributed":false,
+    "pin_memory":true,
+    "prefetch_factor":2,
+    "linear_evaluation":false, // set to true to evaluate a pretrained model
+    "pretrained_model_path":null, //path for the checkpoint to be evaluated under the linear eval protocol
+    "has_collate_fn":true, // indicates if dataloader has a collate_fn method
+    "det_format":"pascal_voc", // Format to match for all annotations?
+    "det_format_neontree_detection":"pascal_voc", // define format for bounding boxes: pascal_voc, coco or yolo
+    "det_format_reforestree":"pascal_voc", // define format for bounding boxes: pascal_voc, coco or yolo
+    "resume_checkpoint_path":null, // checkpoint to resume training
+    "enforce_resize":null, // if not none, data will be resized in both train/evaluation to the provided value (only for webdataset setting),
+    "change_finetuning_resolution":null, // If not none, the finetuning vit will have its positional embedding changed to support the new res
+    "finetuning_patch_size":null, // In accordance to finetuning resolution. Ideally keep it the same as in training
+    "iou_thresh": 0.3,
+    "conf_thresh": 0.3,
+    "eval_metric":"iou",
+}

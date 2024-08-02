@@ -1,5 +1,12 @@
+import os
+import sys
 from pathlib import Path
-from utilities.tilerizer import Tilerizer
+
+# Allow loading tilerizer from the above hierarchy
+higher_level_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(higher_level_folder)
+
+from tilerizer import Tilerizer
 
 
 def tile_dataset(tile_paths, annot_path):

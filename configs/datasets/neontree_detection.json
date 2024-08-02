@@ -1,0 +1,11 @@
+{
+    "root_path":"/network/scratch/a/arthur.ouaknine/data/NeonTree",
+    "task":"detection", // Possible Tasks: Depending on the dataset,
+    "segmentation_task":null, // Set to false if segmentation is not required 
+    "num_classes":1,
+    "in_channels":3,
+    "modality":"rgb",
+    "metrics":["iou","ciou","map"],
+    // "metrics":["accuracy","fscore"],
+    "meta_info":""
+}

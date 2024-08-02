@@ -1,5 +1,12 @@
+import os
+import sys
 from pathlib import Path
-from utilities.tilerizer import Tilerizer
+
+# Allow loading tilerizer from the above hierarchy
+higher_level_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(higher_level_folder)
+
+from tilerizer import Tilerizer
 
 
 def tile_training(tile_path, annot_path):
@@ -29,7 +36,8 @@ def tile_evaluation(tile_path, annot_path):
 
 def main():
     # Please modify the folder_path to the NeonTree official dataset
-    folder_path = "path/to/dataset"
+    # folder_path = "path/to/dataset"
+    folder_path = "/network/scratch/a/arthur.ouaknine/data/NeonTree"
     neontree_path = Path(folder_path)
     annot_path = neontree_path / "annotations"
     evaluation_rgb_path = neontree_path / "evaluation" / "RGB"

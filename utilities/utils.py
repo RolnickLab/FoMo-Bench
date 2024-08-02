@@ -25,7 +25,7 @@ import datasets
 import training.classification as classification
 import training.detection as detection
 import training.mae_training as mae_training
-import training.supervised_cls_foundation as supervised_cls_foundation
+# import training.supervised_cls_foundation as supervised_cls_foundation
 
 # import training.meta_mae_training as meta_mae_training
 import training.segmentation as segmentation

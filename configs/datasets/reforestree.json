@@ -1,0 +1,12 @@
+{
+    "root_path":"/home/mila/a/arthur.ouaknine/scratch/data/fomobench/ReforesTree",
+    "download":false, // Option to download the dataset
+    "checksum": false,  // check the MD5 of the downloaded files 
+    "task":"detection",
+    "segmentation_task":null,  // segmentation not required here
+    "num_classes":6,
+    "in_channels":3,
+    // "metrics": ["accuracy","fscore"], //Desired metrics to log
+    "metrics":["iou","ciou","map"],
+    "meta_info":""
+}
