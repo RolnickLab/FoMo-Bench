@@ -157,7 +157,7 @@ def create_detector(configs):
                 model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes=configs["num_classes"])
         elif configs["backbone"].lower() == "dinov2":
             from transformers import Dinov2Model, Dinov2Config
-            from utilities.faster_rcnn.faster_rcnn import FasterRCNN
+            from model_zoo.faster_rcnn.faster_rcnn import FasterRCNN
             from torchvision.models.detection.anchor_utils import AnchorGenerator
             from torchvision.ops import MultiScaleRoIAlign
 
@@ -520,8 +520,9 @@ def create_model(configs):
                 print("=" * 20)
                 model = FinetunerSegmentation(model, configs)
             elif configs["task"] == "detection":
-                if configs["architecture"].lower() == "fasterrcnn":
-                    from utilities.faster_rcnn.faster_rcnn import FasterRCNN
+                if configs["architecture"].lower() == "fomonet":
+                    # It uses a Faster RCNN head for finetuning
+                    from model_zoo.faster_rcnn.faster_rcnn import FasterRCNN
                     from torchvision.models.detection.anchor_utils import AnchorGenerator
                     from torchvision.ops import MultiScaleRoIAlign
 
@@ -551,7 +552,8 @@ def create_model(configs):
                         box_nms_thresh=configs["iou_thresh"],
                     )
                 else:
-                    print("Finetuning on {} with model {} is not yet supported!".format(configs["task"], configs["model"]))
+                    import ipdb; ipdb.set_trace()
+                    print("Finetuning on {} with model {} is not yet supported!".format(configs["task"], configs["architecture"]))
             else:
                 print("Finetuning on ", configs["task"], " is not yet supported!")
 

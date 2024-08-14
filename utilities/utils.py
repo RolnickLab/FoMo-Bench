@@ -346,7 +346,8 @@ def create_dataloaders(configs):
 
     drop_last_eval = False
     if "architecture" in configs:
-        if configs["architecture"] == "fasterrcnn" and (configs["linear_evaluation"] or configs["backbone"] == "dinov2"):
+        if (configs["architecture"] == "fasterrcnn" or configs["architecture"].lower() == "fomonet") \
+        and (configs["linear_evaluation"] or configs["backbone"] == "dinov2"):
             drop_last_eval = True
 
     train_loader = torch.utils.data.DataLoader(

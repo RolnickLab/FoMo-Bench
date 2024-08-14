@@ -18,7 +18,7 @@ import utilities.yolov5.loss as yolov5_loss
 def train_epoch(train_loader, model, optimizer, epoch, configs, scaler, iteration, scheduler=None):
     model.train()
     image_processor = utils.create_image_processor(configs)
-    if configs["linear_evaluation"]:
+    if configs["architecture"].lower() == "fomonet":
         available_modalities = configs["dataset_modality_index"][configs["dataset"]]
         spectral_keys = []
         for modality in available_modalities:
@@ -85,7 +85,7 @@ def train_epoch(train_loader, model, optimizer, epoch, configs, scaler, iteratio
                 out = model(pixel_values=embeddings, labels=targets)
                 loss = out["loss"]
             else:
-                if configs["linear_evaluation"] and configs["architecture"] == "fasterrcnn":
+                if configs["architecture"].lower() == "fomonet":
                     # This is with custom faster rcnn
                     if "exceptional_resize" in configs.keys():
                         if isinstance(configs["exceptional_resize"], int):
@@ -104,11 +104,11 @@ def train_epoch(train_loader, model, optimizer, epoch, configs, scaler, iteratio
                     # Losses are computed in the model for train mode
                     loss = sum(sub_loss for sub_loss in out.values())
 
-        if configs["linear_evaluation"]:
+        if  configs["architecture"].lower() == "fomonet" or configs["linear_evaluation"]:
             model_utils.adjust_learning_rate(optimizer, iteration, configs)
 
         if iteration % 20 == 0:
-            if configs["linear_evaluation"]:
+            if  configs["architecture"].lower() == "fomonet" or configs["linear_evaluation"]:
                 log_dict = {
                     "Epoch": epoch,
                     "Iteration": iteration,
@@ -219,7 +219,7 @@ def test(configs, phase, model=None, loader=None, epoch=None, dataset_name=None)
     image_processor = utils.create_image_processor(configs)
     iou_thresh = configs["iou_thresh"]
     conf_thresh = configs["conf_thresh"]
-    if configs["linear_evaluation"]:
+    if  configs["architecture"].lower() == "fomonet":
         available_modalities = configs["dataset_modality_index"][configs["dataset"]]
         spectral_keys = []
         for modality in available_modalities:
@@ -328,7 +328,7 @@ def test(configs, phase, model=None, loader=None, epoch=None, dataset_name=None)
                 out = [utils.apply_nms(out_frame, iou_thresh=iou_thresh) for out_frame in out]
                 out = [utils.apply_conf(out_frame, conf_thresh=conf_thresh) for out_frame in out]
             else:
-                if configs["linear_evaluation"]:
+                if configs["architecture"].lower() == "fomonet":
                     # This is with custom faster rcnn
                     out = model(images=images, spectral_keys=spectral_keys)
                     out = [utils.apply_nms(out_frame, iou_thresh=iou_thresh) for out_frame in out]
@@ -376,32 +376,35 @@ def test(configs, phase, model=None, loader=None, epoch=None, dataset_name=None)
                 evaluation_score = scores[metric_name].item()
 
     if configs["wandb"]:
-        if configs["normalization"] == "standard":
-            first_image = first_image.unsqueeze(0)
-            first_image = kornia.enhance.Denormalize(torch.tensor(configs["mean"]), torch.tensor(configs["std"]))(
-                first_image
-            ).squeeze()
-            first_image = first_image[:3, :, :].permute(1, 2, 0) / first_image.max()
-            first_image *= 255
-        elif configs["normalization"] == "none":
-            first_image = first_image[:3, :, :].permute(1, 2, 0)
-        else:
-            first_image = first_image[:3, :, :].permute(1, 2, 0) * 255
+        # Store image every 20 epochs:
+        if epoch%20 == 0:
+            if configs["normalization"] == "standard":
+                first_image = first_image.unsqueeze(0)
+                first_image = kornia.enhance.Denormalize(torch.tensor(configs["mean"]), torch.tensor(configs["std"]))(
+                    first_image
+                ).squeeze()
+                first_image = first_image[:3, :, :].permute(1, 2, 0) / first_image.max()
+                first_image *= 255
+            elif configs["normalization"] == "none":
+                first_image = first_image[:3, :, :].permute(1, 2, 0)
+            else:
+                first_image = first_image[:3, :, :].permute(1, 2, 0) * 255
 
-        im_size = list(first_image.size())[:2]
-        # Everything should be in Pascal format before
-        first_prediction_formatted = utils.format_bboxes_wandb(first_prediction, "pascal_voc", im_size)
-        first_target_formatted = utils.format_bboxes_wandb(first_target, "pascal_voc", im_size)
-        boxes_img_gt = wandb.Image(
-            (first_image).int().cpu().detach().numpy(),
-            boxes={"ground_truth": {"box_data": first_target_formatted, "class_labels": class_id_to_label}},
-        )
-        boxes_img_pred = wandb.Image(
-            (first_image).int().cpu().detach().numpy(),
-            boxes={"predictions": {"box_data": first_prediction_formatted, "class_labels": class_id_to_label}},
-        )
-        log_dict[phase + " sample GT"] = boxes_img_gt
-        log_dict[phase + " sample predictions"] = boxes_img_pred
+            im_size = list(first_image.size())[:2]
+            # Everything should be in Pascal format before
+            first_prediction_formatted = utils.format_bboxes_wandb(first_prediction, "pascal_voc", im_size)
+            first_target_formatted = utils.format_bboxes_wandb(first_target, "pascal_voc", im_size)
+            boxes_img_gt = wandb.Image(
+                (first_image).int().cpu().detach().numpy(),
+                boxes={"ground_truth": {"box_data": first_target_formatted, "class_labels": class_id_to_label}},
+            )
+            boxes_img_pred = wandb.Image(
+                (first_image).int().cpu().detach().numpy(),
+                boxes={"predictions": {"box_data": first_prediction_formatted, "class_labels": class_id_to_label}},
+            )
+            log_dict[phase + " sample GT"] = boxes_img_gt
+            log_dict[phase + " sample predictions"] = boxes_img_pred
+        # Still pushing the logs at each epoch
         wandb.log(log_dict)
     else:
         print(log_dict)
