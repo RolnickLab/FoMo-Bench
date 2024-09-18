@@ -24,6 +24,7 @@ If you use this work please consider citing:
 - [Add new datasets](#adding-new-datasets)
 - [Webdataset setup](#webdataset-setup)
 - [Supported datasets](#datasets-in-the-benchmark)
+- [Loading pretrained FoMo-Net](#loading-pretrained-fomo-net)
 
 ### Setup project
 
@@ -264,3 +265,7 @@ The following table presents the datasets supported in this repo, along with som
 | [TalloS]()|Sentinel-1, Sentinel-2, DEM, ERA-5|Multi-label Classification| Global|
 
 
+### Loading pretrained FoMo-Net
+The pretrained weights for FoMo-Net$`_1`$ can be accessed [here](https://www.dropbox.com/scl/fi/4ckmxlcbc0tcod8hknp7c/fomo_single_embedding_layer_weights.pt?rlkey=26tlf3yaz93vvcosr0qrvklub&st=lm17tghn&dl=0).
+
+`examples/pretrained_fomo_example.py` presents a minimal example of initializing FoMo-Net$`_1`$ and loading the pretrained weights.
