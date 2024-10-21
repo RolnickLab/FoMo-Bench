@@ -1,4 +1,4 @@
-### This repository contains the code used in [FoMo-Bench: a multi-modal, multi-scale and multi-task Forest Monitoring Benchmark for remote sensing foundation models](https://arxiv.org/abs/2312.10114) (Status: WIP)
+### This repository contains the code used in [FoMo-Bench: a multi-modal, multi-scale and multi-task Forest Monitoring Benchmark for remote sensing foundation models](https://arxiv.org/abs/2312.10114)
 
 
 If you use this work please consider citing:
@@ -25,6 +25,7 @@ If you use this work please consider citing:
 - [Webdataset setup](#webdataset-setup)
 - [Supported datasets](#datasets-in-the-benchmark)
 - [Loading pretrained FoMo-Net](#loading-pretrained-fomo-net)
+- [Prtrained supervised baselines](#pretrained-supervised-baselines)
 
 ### Setup project
 
@@ -269,3 +270,12 @@ The following table presents the datasets supported in this repo, along with som
 The pretrained weights for FoMo-Net$`_1`$ can be accessed [here](https://www.dropbox.com/scl/fi/4ckmxlcbc0tcod8hknp7c/fomo_single_embedding_layer_weights.pt?rlkey=26tlf3yaz93vvcosr0qrvklub&st=lm17tghn&dl=0).
 
 `examples/pretrained_fomo_example.py` presents a minimal example of initializing FoMo-Net$`_1`$ and loading the pretrained weights.
+
+### Pretrained supervised baselines
+ FoMo-Bench baseline checkpoints trained with a random seed set to 222:
+  - TalloS:
+      - [ConvNeXt](https://www.dropbox.com/scl/fi/awflxfi5kwv803fu28se4/convnext_tallos.pt?rlkey=euyjn43b870hca75lgisztbus&st=nnggodxa&dl=0)
+  - TreeSatAI (Sentinel-2 200m):
+      - [ConvNeXt](https://www.dropbox.com/scl/fi/jqtj98icjed5yh9gr1vs6/convnext_treesat.pt?rlkey=v5cvt9x4ijt0pucjjf00eaxs2&st=uai2s6zz&dl=0)
+   
+ `examples/pretrained_fomobench_example.py` presents a minimal example of loading the pretrained weights.
