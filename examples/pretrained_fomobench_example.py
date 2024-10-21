@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset_config", default="configs/datasets/tallos.json")
-    parser.add_argument("--model_config", default="configs/method/classification/convnext.json")
+    parser.add_argument("--model_config", default="configs/method/classification/convnext.json") #Backbone configuration file. See configs/method directory
     parser.add_argument("--checkpoint_path",default="YOUR_CHECKPOINT_PATH.pt")
 
 
