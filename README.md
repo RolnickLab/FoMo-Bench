@@ -1,4 +1,4 @@
-### This repository contains the code used in [FoMo: Multi-Modal, Multi-Scale and Multi-Task Remote Sensing Foundation Models for Forest Monitoring) (WIP)
+### This repository contains the code used in [FoMo: Multi-Modal, Multi-Scale and Multi-Task Remote Sensing Foundation Models for Forest Monitoring](https://arxiv.org/abs/2312.10114) (WIP)
 
 
 If you use this work please consider citing:
