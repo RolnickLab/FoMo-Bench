@@ -1,4 +1,4 @@
-### This repository contains the code used in [FoMo-Bench: a multi-modal, multi-scale and multi-task Forest Monitoring Benchmark for remote sensing foundation models](https://arxiv.org/abs/2312.10114)
+### This repository contains the code used in [FoMo: Multi-Modal, Multi-Scale and Multi-Task Remote Sensing Foundation Models for Forest Monitoring)
 
 
 If you use this work please consider citing:
@@ -110,6 +110,7 @@ To download the datasets used in this benchmark select the desired dataset in `c
 
 **Note for object detection and point cloud datasets**: we provide scripts to create tiles or sub-point clouds for the NeonTree, ReforesTree and FORinstance datasets. Please refer to the corresponding scripts in the utilities folder, either for [detection](utilities/detection_datasets) or [point cloud](utilities/pointcloud_datasets) datasets.    
 
+TalloS Dataset can be found in the following [dropbox folder](https://www.dropbox.com/scl/fi/yi77lxq9b0600d4whk0r1/talloS.tar.gz?rlkey=ixv6swkrcdphay8aojwyxvnil&st=x15wuvht&dl=0).
 
 ### Experiments
 
