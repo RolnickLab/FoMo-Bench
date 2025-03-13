@@ -15,6 +15,7 @@ If you use this work please consider citing:
 - [Setup Project](#setup-project)
 - [Repository Structure](#repository-structure)
 - [Downloading the data](#downloading-datasets)
+- [TalloS](#tallos)
 - [Running Experiments](#experiments)
     - [Supported Models](#supported-models)
     - [Adding new models](#adding-new-models)
@@ -110,7 +111,10 @@ To download the datasets used in this benchmark select the desired dataset in `c
 
 **Note for object detection and point cloud datasets**: we provide scripts to create tiles or sub-point clouds for the NeonTree, ReforesTree and FORinstance datasets. Please refer to the corresponding scripts in the utilities folder, either for [detection](utilities/detection_datasets) or [point cloud](utilities/pointcloud_datasets) datasets.    
 
-TalloS Dataset can be found in the following [dropbox folder](https://www.dropbox.com/scl/fo/4h6dihx22gjg9vl8ofiek/AAm_Dwscf7u1mhQS0tqDQSY?rlkey=cpcal7kmrj55yihxvu3xkmshs&st=99b4yytx&dl=0).
+
+### TalloS
+
+TalloS Dataset can be found in the following [dropbox folder](https://www.dropbox.com/scl/fo/4h6dihx22gjg9vl8ofiek/AAm_Dwscf7u1mhQS0tqDQSY?rlkey=cpcal7kmrj55yihxvu3xkmshs&st=99b4yytx&dl=0%5D(https://www.dropbox.com/scl/fo/4h6dihx22gjg9vl8ofiek/AAm_Dwscf7u1mhQS0tqDQSY?rlkey=cpcal7kmrj55yihxvu3xkmshs&st=8irk22zn&dl=0)).
 
 ### Experiments
 
